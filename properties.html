@@ -6,16 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bmd Immobilier - العقارات</title>
     <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Bmd Immobilier</a>
-            </div>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -30,6 +24,7 @@
                         <select id="type-filter" class="filter-select" onchange="applyFilters()">
                             <option value="">جميع الأنواع</option>
                             <option value="شقة">شقة</option>
+							<option value="منزل">منزل</option>
                             <option value="فيلا">فيلا</option>
                             <option value="محل">محل</option>
                             <option value="أرض">أرض</option>
@@ -41,12 +36,9 @@
                         <label class="filter-label">المدينة</label>
                         <select id="city-filter" class="filter-select" onchange="applyFilters()">
                             <option value="">جميع المدن</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
-                            <option value="الدمام">الدمام</option>
-                            <option value="الخبر">الخبر</option>
-                            <option value="مكة المكرمة">مكة المكرمة</option>
-                            <option value="القصيم">القصيم</option>
+                            <option value="بامنديل">بامنديل</option>
+                            <option value="بوعامر">بوعامر</option>
+							<option value="الخفجي">الخفجي</option>
                         </select>
                     </div>
                     
@@ -91,23 +83,23 @@
     <nav class="bottom-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-item">
-                <div class="nav-icon">🏠</div>
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
                 <div class="nav-text">الرئيسية</div>
             </a>
             <a href="properties.html" class="nav-item active">
-                <div class="nav-icon">🏢</div>
+                <div class="nav-icon"><i class="fas fa-building"></i></div>
                 <div class="nav-text">العقارات</div>
             </a>
             <a href="categories.html" class="nav-item">
-                <div class="nav-icon">📂</div>
+                <div class="nav-icon"><i class="fas fa-th-large"></i></div>
                 <div class="nav-text">الفئات</div>
             </a>
             <a href="favorites.html" class="nav-item">
-                <div class="nav-icon">⭐</div>
+                <div class="nav-icon"><i class="fas fa-heart"></i></div>
                 <div class="nav-text">المفضلة</div>
             </a>
             <a href="settings.html" class="nav-item">
-                <div class="nav-icon">⚙️</div>
+                <div class="nav-icon"><i class="fas fa-cog"></i></div>
                 <div class="nav-text">الإعدادات</div>
             </a>
         </div>
