@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmd Immobilier - الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-home"></i>
+                        Bmd Immobilier
+                    </a>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-bar">
+                        <div class="search-item">
+                            <label>الموقع</label>
+                            <input type="text" placeholder="أين تريد البحث؟">
+                        </div>
+                        <div class="search-divider"></div>
+                        <div class="search-item">
+                            <label>النوع</label>
+                            <select>
+                                <option>جميع الأنواع</option>
+                                <option>شقة</option>
+                                <option>فيلا</option>
+                                <option>مكتب</option>
+                            </select>
+                        </div>
+                        <div class="search-divider"></div>
+                        <div class="search-item">
+                            <label>السعر</label>
+                            <input type="text" placeholder="أي سعر">
+                        </div>
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <nav class="header-nav">
+                        <a href="properties.html" class="nav-link">
+                            <i class="fas fa-building"></i>
+                            العقارات
+                        </a>
+                        <a href="favorites.html" class="nav-link">
+                            <i class="fas fa-heart"></i>
+                            المفضلة
+                        </a>
+                        <div class="user-menu">
+                            <button class="user-menu-btn">
+                                <i class="fas fa-bars"></i>
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Slider -->
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slide active" style="background-image: url('https://i.postimg.cc/XJxXj1jh/image.png')">
+                    <div class="slide-content">
+                        <h2>اكتشف عقارات استثنائية</h2>
+                        <p>مجموعة مختارة من أفضل العقارات الفاخرة</p>
+                        <a href="properties.html" class="btn">تصفح العقارات</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/slide2.jpg')">
+                    <div class="slide-content">
+                        <h2>منازل أحلامك في انتظارك</h2>
+                        <p>تصاميم عصرية وموقع مميز</p>
+                        <a href="properties.html" class="btn">ابدأ البحث</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/slide3.jpg')">
+                    <div class="slide-content">
+                        <h2>استثمارات عقارية مربحة</h2>
+                        <p>فرص استثمارية متميزة بعوائد مضمونة</p>
+                        <a href="properties.html" class="btn">اكتشف الفرص</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/slide4.jpg')">
+                    <div class="slide-content">
+                        <h2>شقق حديثة بتصاميم عصرية</h2>
+                        <p>وحدات سكنية متطورة في أفضل المواقع</p>
+                        <a href="properties.html" class="btn">شاهد التفاصيل</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/slide5.jpg')">
+                    <div class="slide-content">
+                        <h2>فيلات فاخرة بإطلالات خلابة</h2>
+                        <p>تصاميم معمارية فريدة وخدمات متكاملة</p>
+                        <a href="properties.html" class="btn">احجز موعد</a>
+                    </div>
+                </div>
+                
+                <!-- Slider Navigation -->
+                <div class="slider-nav">
+                    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn next-btn" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Slider Dots -->
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Search Section -->
+        <section class="advanced-search">
+            <div class="container">
+                <div class="search-container">
+                    <h2 class="search-title">
+                        <i class="fas fa-search"></i>
+                        البحث المخصص
+                    </h2>
+                    
+                    <form class="search-form" id="advancedSearchForm">
+                        <div class="search-row">
+                            <div class="search-field">
+                                <label for="keyword">
+                                    <i class="fas fa-key"></i>
+                                    ابحث بكلمة مفتاحية
+                                </label>
+                                <input type="text" id="keyword" name="keyword" placeholder="اكتب كلمة البحث...">
+                            </div>
+                            
+                            <div class="search-field">
+                                <label for="listingType">
+                                    <i class="fas fa-tag"></i>
+                                    نوع العرض
+                                </label>
+                                <select id="listingType" name="listingType">
+                                    <option value="">جميع الأنواع</option>
+                                    <option value="للبيع">للبيع</option>
+                                    <option value="للإيجار">للإيجار</option>
+                                    <option value="للاستثمار">للاستثمار</option>
+                                </select>
+                            </div>
+                            
+                            <div class="search-field">
+                                <label for="propertyType">
+                                    <i class="fas fa-home"></i>
+                                    النوع
+                                </label>
+                                <select id="propertyType" name="propertyType">
+                                    <option value="">جميع العقارات</option>
+                                    <option value="شقة">شقة</option>
+                                    <option value="فيلا">فيلا</option>
+                                    <option value="مكتب">مكتب</option>
+                                    <option value="محل تجاري">محل تجاري</option>
+                                    <option value="أرض">أرض</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="search-row">
+                            <div class="search-field">
+                                <label for="condition">
+                                    <i class="fas fa-star"></i>
+                                    الحالة
+                                </label>
+                                <select id="condition" name="condition">
+                                    <option value="">جميع الحالات</option>
+                                    <option value="جديد">جديد</option>
+                                    <option value="مستعمل">مستعمل</option>
+                                    <option value="تحت الإنشاء">تحت الإنشاء</option>
+                                    <option value="مجدد">مجدد</option>
+                                </select>
+                            </div>
+                            
+                            <div class="search-field">
+                                <label for="minPrice">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    السعر من
+                                </label>
+                                <input type="number" id="minPrice" name="minPrice" placeholder="الحد الأدنى">
+                            </div>
+                            
+                            <div class="search-field">
+                                <label for="maxPrice">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    السعر إلى
+                                </label>
+                                <input type="number" id="maxPrice" name="maxPrice" placeholder="الحد الأقصى">
+                            </div>
+                        </div>
+                        
+                        <div class="search-actions">
+                            <button type="submit" class="btn search-submit-btn">
+                                <i class="fas fa-search"></i>
+                                بحث متقدم
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearSearch()">
+                                <i class="fas fa-times"></i>
+                                مسح الفلاتر
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <h1 class="page-title">مرحباً بكم في Bmd Immobilier</h1>
+            
+            <!-- Quick Navigation -->
+            <div class="quick-nav mb-20">
+                <div class="properties-grid">
+                    <div class="card" onclick="navigateTo('properties.html')">
+                        <h3 class="text-gold">تصفح العقارات</h3>
+                        <p>اكتشف مجموعة واسعة من العقارات المميزة</p>
+                    </div>
+                    <div class="card" onclick="navigateTo('categories.html')">
+                        <h3 class="text-gold">الفئات</h3>
+                        <p>تصفح العقارات حسب النوع</p>
+                    </div>
+                    <div class="card" onclick="navigateTo('favorites.html')">
+                        <h3 class="text-gold">المفضلة</h3>
+                        <p>العقارات التي أضفتها للمفضلة</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Properties -->
+            <section class="featured-section">
+                <h2 class="text-gold mb-20">العقارات المميزة</h2>
+                <div id="featured-properties" class="properties-grid">
+                    <!-- Featured properties will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Recommended Properties -->
+            <section class="recommended-section mt-20">
+                <h2 class="text-gold mb-20">عقارات مقترحة لك</h2>
+                <div id="recommended-properties" class="properties-grid">
+                    <!-- Recommended properties will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item active">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <div class="nav-text">الرئيسية</div>
+            </a>
+            <a href="properties.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-building"></i></div>
+                <div class="nav-text">العقارات</div>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-th-large"></i></div>
+                <div class="nav-text">الفئات</div>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-heart"></i></div>
+                <div class="nav-text">المفضلة</div>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-cog"></i></div>
+                <div class="nav-text">الإعدادات</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

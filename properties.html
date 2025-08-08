@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmd Immobilier - العقارات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Bmd Immobilier</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">جميع العقارات</h1>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label class="filter-label">نوع العقار</label>
+                        <select id="type-filter" class="filter-select" onchange="applyFilters()">
+                            <option value="">جميع الأنواع</option>
+                            <option value="شقة">شقة</option>
+                            <option value="فيلا">فيلا</option>
+                            <option value="محل">محل</option>
+                            <option value="أرض">أرض</option>
+                            <option value="مكتب">مكتب</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">المدينة</label>
+                        <select id="city-filter" class="filter-select" onchange="applyFilters()">
+                            <option value="">جميع المدن</option>
+                            <option value="الرياض">الرياض</option>
+                            <option value="جدة">جدة</option>
+                            <option value="الدمام">الدمام</option>
+                            <option value="الخبر">الخبر</option>
+                            <option value="مكة المكرمة">مكة المكرمة</option>
+                            <option value="القصيم">القصيم</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">السعر الأدنى</label>
+                        <input type="number" id="min-price" class="filter-input" placeholder="0" onchange="applyFilters()">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">السعر الأعلى</label>
+                        <input type="number" id="max-price" class="filter-input" placeholder="5000000" onchange="applyFilters()">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn" onclick="clearFilters()">مسح الفلاتر</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Count -->
+            <div class="mb-20">
+                <p class="text-gold">عدد العقارات: <span id="properties-count">0</span></p>
+            </div>
+
+            <!-- Properties Grid -->
+            <div id="properties-grid" class="properties-grid">
+                <!-- Properties will be loaded here by JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="text-center hidden">
+                <div class="card">
+                    <h3 class="text-gold">لا توجد عقارات تطابق معايير البحث</h3>
+                    <p>جرب تغيير الفلاتر أو مسحها للعثور على عقارات أخرى</p>
+                    <button class="btn mt-20" onclick="clearFilters()">مسح الفلاتر</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">الرئيسية</div>
+            </a>
+            <a href="properties.html" class="nav-item active">
+                <div class="nav-icon">🏢</div>
+                <div class="nav-text">العقارات</div>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <div class="nav-icon">📂</div>
+                <div class="nav-text">الفئات</div>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <div class="nav-icon">⭐</div>
+                <div class="nav-text">المفضلة</div>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">الإعدادات</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Properties page specific functions
+        function loadPropertiesPage() {
+            loadAllProperties();
+        }
+
+        function loadAllProperties() {
+            const container = document.getElementById('properties-grid');
+            const countElement = document.getElementById('properties-count');
+            const noResultsElement = document.getElementById('no-results');
+            
+            if (!container) return;
+
+            container.innerHTML = '';
+            
+            if (filteredProperties.length === 0) {
+                noResultsElement.classList.remove('hidden');
+                countElement.textContent = '0';
+                return;
+            } else {
+                noResultsElement.classList.add('hidden');
+            }
+
+            countElement.textContent = filteredProperties.length;
+
+            filteredProperties.forEach(property => {
+                const propertyCard = createPropertyCard(property);
+                container.appendChild(propertyCard);
+            });
+        }
+
+        function applyFilters() {
+            const typeFilter = document.getElementById('type-filter').value;
+            const cityFilter = document.getElementById('city-filter').value;
+            const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+
+            filteredProperties = properties.filter(property => {
+                // Type filter
+                if (typeFilter && property.type !== typeFilter) {
+                    return false;
+                }
+
+                // City filter
+                if (cityFilter && property.city !== cityFilter) {
+                    return false;
+                }
+
+                // Price filter
+                const propertyPrice = parseFloat(property.price.replace(/[^\d]/g, ''));
+                if (propertyPrice < minPrice || propertyPrice > maxPrice) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            loadAllProperties();
+        }
+
+        function clearFilters() {
+            document.getElementById('type-filter').value = '';
+            document.getElementById('city-filter').value = '';
+            document.getElementById('min-price').value = '';
+            document.getElementById('max-price').value = '';
+            
+            filteredProperties = [...properties];
+            loadAllProperties();
+        }
+
+        // Initialize filters on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            filteredProperties = [...properties];
+        });
+    </script>
+</body>
+</html>
+

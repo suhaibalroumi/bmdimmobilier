@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmd Immobilier - المفضلة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Bmd Immobilier</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">العقارات المفضلة</h1>
+            
+            <!-- Favorites Count -->
+            <div class="mb-20">
+                <p class="text-gold">عدد العقارات المفضلة: <span id="favorites-count">0</span></p>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div id="favorites-grid" class="properties-grid">
+                <!-- Favorite properties will be loaded here by JavaScript -->
+            </div>
+
+            <!-- No Favorites Message -->
+            <div id="no-favorites" class="text-center hidden">
+                <div class="card">
+                    <h3 class="text-gold">لا توجد عقارات مفضلة</h3>
+                    <p>لم تقم بإضافة أي عقارات للمفضلة بعد</p>
+                    <button class="btn mt-20" onclick="navigateTo('properties.html')">تصفح العقارات</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">الرئيسية</div>
+            </a>
+            <a href="properties.html" class="nav-item">
+                <div class="nav-icon">🏢</div>
+                <div class="nav-text">العقارات</div>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <div class="nav-icon">📂</div>
+                <div class="nav-text">الفئات</div>
+            </a>
+            <a href="favorites.html" class="nav-item active">
+                <div class="nav-icon">⭐</div>
+                <div class="nav-text">المفضلة</div>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">الإعدادات</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Favorites page specific functions
+        function loadFavoritesPage() {
+            loadFavoriteProperties();
+        }
+
+        function loadFavoriteProperties() {
+            const container = document.getElementById('favorites-grid');
+            const countElement = document.getElementById('favorites-count');
+            const noFavoritesElement = document.getElementById('no-favorites');
+            
+            if (!container) return;
+
+            // Get favorites from localStorage
+            const favoriteIds = JSON.parse(localStorage.getItem('bmd_favorites')) || [];
+            const favoriteProperties = properties.filter(property => favoriteIds.includes(property.id));
+
+            container.innerHTML = '';
+            
+            if (favoriteProperties.length === 0) {
+                noFavoritesElement.classList.remove('hidden');
+                countElement.textContent = '0';
+                return;
+            } else {
+                noFavoritesElement.classList.add('hidden');
+            }
+
+            countElement.textContent = favoriteProperties.length;
+
+            favoriteProperties.forEach(property => {
+                const propertyCard = createPropertyCard(property);
+                container.appendChild(propertyCard);
+            });
+        }
+    </script>
+</body>
+</html>
+

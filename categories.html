@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmd Immobilier - الفئات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Bmd Immobilier</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">فئات العقارات</h1>
+            
+            <!-- Categories Grid -->
+            <div id="categories-grid" class="categories-grid">
+                <!-- Categories will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">الرئيسية</div>
+            </a>
+            <a href="properties.html" class="nav-item">
+                <div class="nav-icon">🏢</div>
+                <div class="nav-text">العقارات</div>
+            </a>
+            <a href="categories.html" class="nav-item active">
+                <div class="nav-icon">📂</div>
+                <div class="nav-text">الفئات</div>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <div class="nav-icon">⭐</div>
+                <div class="nav-text">المفضلة</div>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">الإعدادات</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Categories page specific functions
+        function loadCategoriesPage() {
+            loadCategories();
+        }
+
+        function loadCategories() {
+            const container = document.getElementById('categories-grid');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            categories.forEach(category => {
+                const categoryCard = createCategoryCard(category);
+                container.appendChild(categoryCard);
+            });
+        }
+
+        function createCategoryCard(category) {
+            const card = document.createElement('div');
+            card.className = 'category-card';
+            card.onclick = () => viewCategoryProperties(category);
+
+            card.innerHTML = `
+                <div class="category-icon">${category.icon}</div>
+                <div class="category-name">${category.name}</div>
+                <div class="category-count">${category.count} عقار</div>
+            `;
+
+            return card;
+        }
+
+        function viewCategoryProperties(category) {
+            // Track category visit
+            trackCategoryVisit(category.id);
+            
+            // Store category filter and navigate to properties page
+            localStorage.setItem('bmd_category_filter', category.id);
+            navigateTo('properties.html');
+        }
+    </script>
+</body>
+</html>
+

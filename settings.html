@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmd Immobilier - الإعدادات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Bmd Immobilier</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">الإعدادات</h1>
+            
+            <!-- Appearance Settings -->
+            <div class="settings-section">
+                <h2 class="settings-title">المظهر</h2>
+                <div class="setting-item">
+                    <span class="setting-label">الوضع الداكن</span>
+                    <div id="dark-mode-toggle" class="toggle-switch" onclick="toggleDarkMode()">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Management -->
+            <div class="settings-section">
+                <h2 class="settings-title">إدارة البيانات</h2>
+                <div class="setting-item">
+                    <span class="setting-label">مسح المفضلة</span>
+                    <button class="btn-secondary" onclick="clearFavorites()">مسح</button>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">مسح سجل التصفح</span>
+                    <button class="btn-secondary" onclick="clearBrowsingHistory()">مسح</button>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">مسح جميع البيانات</span>
+                    <button class="btn-secondary" onclick="clearAllData()">مسح الكل</button>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="settings-section">
+                <h2 class="settings-title">الإحصائيات</h2>
+                <div class="setting-item">
+                    <span class="setting-label">العقارات المفضلة</span>
+                    <span id="favorites-stat" class="text-gold">0</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">العقارات المشاهدة</span>
+                    <span id="viewed-stat" class="text-gold">0</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">الفئات المزارة</span>
+                    <span id="categories-stat" class="text-gold">0</span>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="settings-section">
+                <h2 class="settings-title">حول التطبيق</h2>
+                <div class="setting-item">
+                    <span class="setting-label">اسم التطبيق</span>
+                    <span class="text-gold">Bmd Immobilier</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">الإصدار</span>
+                    <span class="text-gold">1.0.0</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">المطور</span>
+                    <span class="text-gold">Bmd Team</span>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="settings-section">
+                <h2 class="settings-title">التواصل</h2>
+                <div class="text-center">
+                    <button class="btn mb-20" onclick="contactSupport()">تواصل مع الدعم</button>
+                    <button class="btn-secondary" onclick="reportIssue()">الإبلاغ عن مشكلة</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">الرئيسية</div>
+            </a>
+            <a href="properties.html" class="nav-item">
+                <div class="nav-icon">🏢</div>
+                <div class="nav-text">العقارات</div>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <div class="nav-icon">📂</div>
+                <div class="nav-text">الفئات</div>
+            </a>
+            <a href="favorites.html" class="nav-item">
+                <div class="nav-icon">⭐</div>
+                <div class="nav-text">المفضلة</div>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">الإعدادات</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Settings page specific functions
+        function loadSettingsPage() {
+            updateStatistics();
+            applyDarkMode(); // Apply current dark mode setting
+        }
+
+        function updateStatistics() {
+            const favorites = JSON.parse(localStorage.getItem('bmd_favorites')) || [];
+            const userBehavior = JSON.parse(localStorage.getItem('bmd_user_behavior')) || {
+                visitedCategories: {},
+                viewedProperties: []
+            };
+
+            document.getElementById('favorites-stat').textContent = favorites.length;
+            document.getElementById('viewed-stat').textContent = userBehavior.viewedProperties.length;
+            document.getElementById('categories-stat').textContent = Object.keys(userBehavior.visitedCategories).length;
+        }
+
+        function clearFavorites() {
+            if (confirm('هل أنت متأكد من مسح جميع العقارات المفضلة؟')) {
+                localStorage.removeItem('bmd_favorites');
+                updateStatistics();
+                alert('تم مسح المفضلة بنجاح');
+            }
+        }
+
+        function clearBrowsingHistory() {
+            if (confirm('هل أنت متأكد من مسح سجل التصفح؟')) {
+                localStorage.removeItem('bmd_user_behavior');
+                updateStatistics();
+                alert('تم مسح سجل التصفح بنجاح');
+            }
+        }
+
+        function clearAllData() {
+            if (confirm('هل أنت متأكد من مسح جميع البيانات؟ هذا الإجراء لا يمكن التراجع عنه.')) {
+                localStorage.removeItem('bmd_favorites');
+                localStorage.removeItem('bmd_user_behavior');
+                localStorage.removeItem('bmd_current_property');
+                localStorage.removeItem('bmd_category_filter');
+                updateStatistics();
+                alert('تم مسح جميع البيانات بنجاح');
+            }
+        }
+
+        function contactSupport() {
+            alert('يمكنك التواصل معنا عبر البريد الإلكتروني: support@bmdimmobilier.com');
+        }
+
+        function reportIssue() {
+            alert('لإبلاغ عن مشكلة، يرجى إرسال رسالة إلى: issues@bmdimmobilier.com');
+        }
+    </script>
+</body>
+</html>
+
