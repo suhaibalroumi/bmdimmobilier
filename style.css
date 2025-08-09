@@ -7,7 +7,10 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "El Messiri", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
     background-color: #000000;
     color: #ffffff;
     line-height: 1.6;
@@ -1429,5 +1432,60 @@ body.dark-mode .category-card {
     .contact-section {
         padding: 20px;
     }
+	
+	/* Search Results Page Styles */
+.search-summary {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
+.search-filters h3 {
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.filter-tags li {
+    background-color: #e9ecef;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-tags li span {
+    font-weight: bold;
+    color: #495057;
+}
+
+.no-results {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.no-results h3 {
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: #6c757d;
+    margin-bottom: 20px;
+}

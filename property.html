@@ -10,6 +10,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHSH00W6VD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SHSH00W6VD');
+    </script>
 </head>
 <style>
 
@@ -323,6 +331,7 @@
             specsContainer.innerHTML = '';
 
             const specs = [
+			    { label: 'نوع العرض', value: property.offer, icon: 'fa-solid fa-file' },
                 { label: 'المساحة', value: property.area, icon: 'fas fa-ruler-combined' },
                 { label: 'النوع', value: property.type, icon: 'fas fa-home' },
 				{ label: 'الوثائق', value: property.document, icon: 'fa-solid fa-file' },

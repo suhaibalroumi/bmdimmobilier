@@ -10,6 +10,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHSH00W6VD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SHSH00W6VD');
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -34,6 +42,7 @@
                             <option value="مكتب">مكتب</option>
                         </select>
                     </div>
+					
                     
                     <div class="filter-group">
                         <label class="filter-label">المدينة</label>
@@ -44,6 +53,17 @@
 							<option value="الخفجي">الخفجي</option>
                         </select>
                     </div>
+					
+					<div class="filter-group">
+                        <label class="filter-label">جميع العروض</label>
+                        <select id="offer-filter" class="filter-select" onchange="applyFilters()">
+                            <option value="">جميع العروض</option>
+                            <option value="للبيع">للبيع</option>
+                            <option value="للإيجار">للإيجار</option>
+							<option value="للاستثمار">للاستثمار</option>
+                        </select>
+                    </div>
+					
 					
 					<div class="filter-group">
                        <label class="filter-label">الوثائق</label>
@@ -160,6 +180,7 @@
     const typeFilter = document.getElementById('type-filter').value;
     const cityFilter = document.getElementById('city-filter').value;
     const documentFilter = document.getElementById('document-filter').value; // فلتر الوثائق
+	const offerFilter = document.getElementById('offer-filter').value;
     const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
     const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
 
@@ -176,6 +197,11 @@
 
         // Document filter
         if (documentFilter && property.document !== documentFilter) {
+            return false;
+        }
+		
+		// offer filter
+        if (offerFilter && property.offer !== offerFilter) {
             return false;
         }
 
@@ -196,6 +222,7 @@
     document.getElementById('type-filter').value = '';
     document.getElementById('city-filter').value = '';
     document.getElementById('document-filter').value = ''; // إعادة الوثائق للوضع الافتراضي
+	document.getElementById('offer-filter').value = '';
     document.getElementById('min-price').value = '';
     document.getElementById('max-price').value = '';
     

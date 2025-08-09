@@ -765,8 +765,8 @@ function handleAdvancedSearch(event) {
     // Store search parameters
     localStorage.setItem('bmd_search_params', JSON.stringify(searchParams));
     
-    // Navigate to properties page with search results
-    window.location.href = 'properties.html?search=advanced';
+    // Navigate to search results page
+    window.location.href = 'search-results.html';
 }
 
 function clearSearch() {
@@ -797,10 +797,10 @@ function performAdvancedSearch(searchParams) {
         });
     }
     
-    // Filter by listing type
+    // Filter by listing type (offer)
     if (searchParams.listingType && searchParams.listingType !== '') {
         results = results.filter(property => 
-            property.listingType === searchParams.listingType
+            property.offer === searchParams.listingType
         );
     }
     

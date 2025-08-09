@@ -10,6 +10,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHSH00W6VD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SHSH00W6VD');
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -147,6 +155,7 @@
                                 <select id="propertyType" name="propertyType">
                                     <option value="">جميع العقارات</option>
                                     <option value="شقة">شقة</option>
+									<option value="منزل">منزل</option>
                                     <option value="فيلا">فيلا</option>
                                     <option value="مكتب">مكتب</option>
                                     <option value="محل تجاري">محل تجاري</option>
@@ -189,9 +198,9 @@
                         
                         <div class="search-actions">
                             <button type="submit" class="btn search-submit-btn">
-                                <i class="fas fa-search"></i>
-                                بحث متقدم
-                            </button>
+    <i class="fas fa-search"></i>
+    بحث متقدم
+</button>
                             <button type="button" class="btn btn-secondary" onclick="clearSearch()">
                                 <i class="fas fa-times"></i>
                                 مسح الفلاتر
@@ -211,10 +220,6 @@
                     <div class="card" onclick="navigateTo('properties.html')">
                         <h3 class="text-gold">تصفح العقارات</h3>
                         <p>اكتشف مجموعة واسعة من العقارات المميزة</p>
-                    </div>
-                    <div class="card" onclick="navigateTo('categories.html')">
-                        <h3 class="text-gold">الفئات</h3>
-                        <p>تصفح العقارات حسب النوع</p>
                     </div>
                     <div class="card" onclick="navigateTo('favorites.html')">
                         <h3 class="text-gold">المفضلة</h3>
