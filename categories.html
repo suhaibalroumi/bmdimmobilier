@@ -3,25 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bmd Immobilier - الفئات</title>
-    <link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Bmd Immobilier - نشر عقار</title>
+	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <h1 class="page-title">فئات العقارات</h1>
-            
-            <!-- Categories Grid -->
-            <div id="categories-grid" class="categories-grid">
-                <!-- Categories will be loaded here by JavaScript -->
-            </div>
-        </div>
-    </main>
-    <!-- Bottom Navigation -->
+<div formsappId="68976b5c95b5e8000253370a"></div>
+<script src="https://forms.app/cdn/embed.js" type="text/javascript" async defer onload="new formsapp('68976b5c95b5e8000253370a', 'fullscreen', {}, 'https://qrtm214l.forms.app');"></script>
+
+ <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-item">
@@ -33,8 +25,8 @@
                 <div class="nav-text">العقارات</div>
             </a>
 			<a href="categories.html" class="nav-item active">
-                <div class="nav-icon"><i class="fas fa-th-large"></i></div>
-                <div class="nav-text">الفئات</div>
+                <div class="nav-icon"><i class="fa-solid fa-circle-plus"></i></div>
+                <div class="nav-text">نشر عقار</div>
             </a>
             <a href="favorites.html" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-heart"></i></div>
@@ -47,50 +39,15 @@
         </div>
     </nav>
 
-    <!-- Scripts -->
-    <script src="data.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Categories page specific functions
-        function loadCategoriesPage() {
-            loadCategories();
+<script>
+    function limitFiles(input) {
+        if (input.files.length > 10) {
+            alert("يمكنك رفع 10 صور كحد أقصى");
+            input.value = "";
         }
+    }
+</script>
 
-        function loadCategories() {
-            const container = document.getElementById('categories-grid');
-            if (!container) return;
-
-            container.innerHTML = '';
-
-            categories.forEach(category => {
-                const categoryCard = createCategoryCard(category);
-                container.appendChild(categoryCard);
-            });
-        }
-
-        function createCategoryCard(category) {
-            const card = document.createElement('div');
-            card.className = 'category-card';
-            card.onclick = () => viewCategoryProperties(category);
-
-            card.innerHTML = `
-                <div class="category-icon">${category.icon}</div>
-                <div class="category-name">${category.name}</div>
-                <div class="category-count">${category.count} عقار</div>
-            `;
-
-            return card;
-        }
-
-        function viewCategoryProperties(category) {
-            // Track category visit
-            trackCategoryVisit(category.id);
-            
-            // Store category filter and navigate to properties page
-            localStorage.setItem('bmd_category_filter', category.id);
-            navigateTo('properties.html');
-        }
-    </script>
 </body>
 </html>
 

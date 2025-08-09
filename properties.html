@@ -7,6 +7,9 @@
     <title>Bmd Immobilier - العقارات</title>
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -41,6 +44,20 @@
 							<option value="الخفجي">الخفجي</option>
                         </select>
                     </div>
+					
+					<div class="filter-group">
+                       <label class="filter-label">الوثائق</label>
+                       <select id="document-filter" class="filter-select" onchange="applyFilters()">
+                            <option value="">جميع الوثائق</option>
+                            <option value="دفتر عقاري">دفتر عقاري</option>
+                            <option value="عقد عرفي">عقد عرفي</option>
+							<option value="قرار">قرار</option>
+							<option value="عقد شيوع">عقد شيوع</option>
+							<option value="عقد موثق">عقد موثق</option>
+                            <option value="عقد ملكية">عقد ملكية</option>
+                        </select>
+                    </div>
+
                     
                     <div class="filter-group">
                         <label class="filter-label">السعر الأدنى</label>
@@ -91,8 +108,8 @@
                 <div class="nav-text">العقارات</div>
             </a>
             <a href="categories.html" class="nav-item">
-                <div class="nav-icon"><i class="fas fa-th-large"></i></div>
-                <div class="nav-text">الفئات</div>
+                <div class="nav-icon"><i class="fa-solid fa-circle-plus"></i></div>
+                <div class="nav-text">نشر عقار</div>
             </a>
             <a href="favorites.html" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-heart"></i></div>
@@ -140,43 +157,52 @@
         }
 
         function applyFilters() {
-            const typeFilter = document.getElementById('type-filter').value;
-            const cityFilter = document.getElementById('city-filter').value;
-            const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
-            const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+    const typeFilter = document.getElementById('type-filter').value;
+    const cityFilter = document.getElementById('city-filter').value;
+    const documentFilter = document.getElementById('document-filter').value; // فلتر الوثائق
+    const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+    const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
 
-            filteredProperties = properties.filter(property => {
-                // Type filter
-                if (typeFilter && property.type !== typeFilter) {
-                    return false;
-                }
-
-                // City filter
-                if (cityFilter && property.city !== cityFilter) {
-                    return false;
-                }
-
-                // Price filter
-                const propertyPrice = parseFloat(property.price.replace(/[^\d]/g, ''));
-                if (propertyPrice < minPrice || propertyPrice > maxPrice) {
-                    return false;
-                }
-
-                return true;
-            });
-
-            loadAllProperties();
+    filteredProperties = properties.filter(property => {
+        // Type filter
+        if (typeFilter && property.type !== typeFilter) {
+            return false;
         }
+
+        // City filter
+        if (cityFilter && property.city !== cityFilter) {
+            return false;
+        }
+
+        // Document filter
+        if (documentFilter && property.document !== documentFilter) {
+            return false;
+        }
+
+        // Price filter
+        const propertyPrice = parseFloat(property.price.replace(/[^\d]/g, ''));
+        if (propertyPrice < minPrice || propertyPrice > maxPrice) {
+            return false;
+        }
+
+        return true;
+    });
+
+    loadAllProperties();
+}
+
 
         function clearFilters() {
-            document.getElementById('type-filter').value = '';
-            document.getElementById('city-filter').value = '';
-            document.getElementById('min-price').value = '';
-            document.getElementById('max-price').value = '';
-            
-            filteredProperties = [...properties];
-            loadAllProperties();
-        }
+    document.getElementById('type-filter').value = '';
+    document.getElementById('city-filter').value = '';
+    document.getElementById('document-filter').value = ''; // إعادة الوثائق للوضع الافتراضي
+    document.getElementById('min-price').value = '';
+    document.getElementById('max-price').value = '';
+    
+    filteredProperties = [...properties];
+    loadAllProperties();
+}
+
 
         // Initialize filters on page load
         document.addEventListener('DOMContentLoaded', function() {
