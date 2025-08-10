@@ -48,7 +48,7 @@ const properties = [
     location: 'الخفجي 38، الطابق الرابع، ورقلة',
     featured: false,
     ownerPhone: '+213666059583'
-}
+},
     {
         id: '3',
 		offer: 'للبيع',
