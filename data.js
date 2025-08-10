@@ -45,7 +45,7 @@ const properties = [
         'https://i.postimg.cc/HsWfzHxD/IMG-20250808-191335.jpg',
         'https://i.postimg.cc/cHqpBnKX/IMG-20250810-184602.jpg'
     ],
-    location: 'الخفجي 38، الطابق الرابع، ورقلة',
+    location: 'الخفجي 38 ورقلة',
     featured: false,
     ownerPhone: '+213666059583'
 },
