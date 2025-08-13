@@ -99,7 +99,7 @@ const properties = [
     type: 'منزل',
     city: 'مخادمة',
     price: '700 مليون',
-    area: '73',
+    area: 'متر مربع 73',
     document: 'دفتر عقاري',
     bedrooms: 4,
     bathrooms: 1,
