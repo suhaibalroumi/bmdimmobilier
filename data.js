@@ -92,9 +92,30 @@ const properties = [
     featured: false,
     ownerPhone: '+213779056304'
 },
-
+{
+    id: '5',
+    offer: 'للبيع',
+    name: 'منزل اف 4 للبيع في مخادمة',
+    type: 'منزل',
+    city: 'مخادمة',
+    price: '700 مليون',
+    area: '73',
+    document: 'دفتر عقاري',
+    bedrooms: 4,
+    bathrooms: 1,
+    description: '▪️ السعر: 700 مليون ▪️ نوع العقار: منزل F4 ▪️ الطابق: الثالث ▪️ الموقع: حي 80 مسكن، مخادمة ▪️ الوثائق: دفتر عقاري',
+    images: [
+        'https://i.postimg.cc/nzykcFy6/528242973-695051300214432-8406529471947652869-n.jpg',
+        'https://i.postimg.cc/kgYWgM8f/528258957-1602884467753832-5088219795999754715-n.jpg',
+	    'https://i.postimg.cc/6qzybzfY/529471842-751715248025405-2990930107654313756-n.jpg',
+	    'https://i.postimg.cc/GpY9nbjB/532130565-1837290517145518-3020732166450947190-n.jpg'
+],
+    location: 'حي 80 مسكن  مخادمة',
+    featured: false,
+    ownerPhone: '+213667329214'
+},
     {
-        id: '5',
+        id: '6',
 		offer: 'للبيع',
         name: 'أرض سكنية للبيع',
         type: 'أرض',
