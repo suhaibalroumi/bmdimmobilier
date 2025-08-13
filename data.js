@@ -114,8 +114,33 @@ const properties = [
     featured: false,
     ownerPhone: '+213667329214'
 },
+	{
+    id: '6',
+    offer: 'للبيع',
+    name: 'قطعة أرض للبيع في تجزئات سيدي جلول الرويسات',
+    type: 'أرض',
+    city: 'الرويسات',
+    price: 'عطاو 250 مليون',
+    area: '200 م²',
+    document: 'دفتر عقاري',
+    bedrooms: 0,
+    bathrooms: 0,
+    description: '▪️ السعر:عطاو 250 مليون ▪️ نوع العقار: قطعة أرض ▪️ المساحة: 200 م² ▪️ الموقع: تجزئات سيدي جلول، الرويسات ورقلة ▪️ المميزات: 3 واجهات ▪️ الوثائق: دفتر عقاري',
+    images: [
+        'https://i.postimg.cc/jjb5QGzy/IMG-20250813-WA0000.jpg',
+        'https://i.postimg.cc/BnDbFq1q/IMG-20250813-WA0003.jpg',
+        'https://i.postimg.cc/LX48GLQX/IMG-20250813-WA0004.jpg',
+        'https://i.postimg.cc/Y0hqCkHB/IMG-20250813-WA0005.jpg',
+        'https://i.postimg.cc/cHDLWCPc/IMG-20250813-WA0006.jpg',
+        'https://i.postimg.cc/FKVKPDZ8/IMG-20250813-WA0006-1.jpg',
+        'https://i.postimg.cc/NFSGyVs9/IMG-20250813-WA0007.jpg'
+    ],
+    location: 'سيدي جلول الرويسات ورقلة',
+    featured: false,
+    ownerPhone: '+213663171784'
+},
     {
-        id: '6',
+        id: '7',
 		offer: 'للبيع',
         name: 'أرض سكنية للبيع',
         type: 'أرض',
