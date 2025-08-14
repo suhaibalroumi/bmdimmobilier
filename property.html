@@ -22,6 +22,50 @@
 </head>
 <style>
 
+	 /* Ad Container Styles */
+       .ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    background: var(--dark-gray);
+    border-radius: 15px;
+    border: 1px solid var(--dark-gold);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ad-container ins {
+    display: block;
+    margin: 0 auto;
+    background: var(--medium-gray);
+    border-radius: 8px;
+}
+
+/* Ad Container Styles */
+.ad-container {
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.ad-label {
+    color: #999;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+
+/* Responsive Ad Styles */
+@media (max-width: 768px) {
+    .ad-container ins {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
 /* Lightbox */
 .lightbox {
     display: none;
@@ -204,6 +248,12 @@
                             <!-- Features will be loaded here -->
                         </div>
                     </div>
+
+						<!-- Ad Banner -->
+<div class="container ad-container">
+    <ins style="width: 728px;height:90px" data-width="728" data-height="90" class="f6953a9b505" data-domain="//data185.click" data-affquery="/5ddbcc52e3cdedf28f5b/6953a9b505/?placementName=default"><script src="//data185.click/js/responsive.js" async></script></ins>
+    <div class="ad-label">إعلان مدفوع</div>
+</div>
 
                     <!-- Contact Section -->
                     <div class="contact-section">
